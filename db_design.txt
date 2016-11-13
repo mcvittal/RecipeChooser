@@ -1,0 +1,46 @@
+RecipeFile(recipeID, recipeFile, prepTime, cookTime)
+Ingredients(recipeID, ingredientID, ingredientName, qty, qtyType)
+Fridge(ingredientID, ingredientName, qty, qtyType, expiryDate)
+Conversion(qty1, qty2, formula)
+
+CREATE TABLE RecipeFile(recipeID Integer PRIMARY KEY UNIQUE,
+                        recipeFile String,
+                        prepTime Integer,
+                        cookTime Integer);
+
+CREATE TABLE Ingredients(ingredientID PRIMARY KEY Integer,
+                         FOREIGN KEY(recipeID) REFERENCES RecipeFile(recipeID),
+                         ingredientName String,
+                         qty Float,
+                         qtyType Integer)
+
+                         
+                         
+
+
+recipeID: Int
+recipeFile: Blob
+prepTime: Int (Minutes)
+cookTime: Int (Minutes)
+ingredientID: Int
+ingredientName: Str
+qty: Float
+qtyType: Str
+
+RecipeFile(recipeID) <1==M> Ingredients(recipeID)
+Fridge(ingredientID) <1==1> Ingredients(ingredientID)
+
+
+QTY
+0 - Just a simple count
+1 - Liters
+2 - Cup
+3 - Tablespoon
+4 - Teaspoon
+5 - Fluid Ounces
+6 - Ounces
+7 - Pound
+8 - Kilogram
+
+
+
